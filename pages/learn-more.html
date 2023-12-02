@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn More About Our Products</title>
+    <link rel="stylesheet" href="../css/stylesheet.css">
+    <!-- Add your stylesheet links here -->
+    <style>
+        /* Style for hiding sections */
+        .product-info {
+            padding: 2em 4em; /* Adds padding around the text; adjust the values as needed */
+            max-width: 1000px; /* Limits the width of the text for readability */
+            margin: auto; /* Centers the section in the page */
+            background: #ffffff; /* Optional: sets a background color for the text area */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow for depth */
+            border-radius: 8px; /* Optional: rounds the corners of the text background */
+        }
+
+        .product-info h1,
+        .product-info h2 {
+            margin-top: 0.5em; /* Adds space at the top of the headers */
+            margin-bottom: 0.5em; /* Adds space at the bottom of the headers */
+        }
+
+        .product-info ul {
+            padding-left: 20px; /* Indents the list to align with the rest of the text */
+        }
+        .product-info li {
+            margin-bottom: 10px; /* Adds space between list items */
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <video autoplay loop muted>
+            <source src="../video/header.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="header-content">
+            <img src="../img/pineapple.png" alt="PineApple Logo" class="header-logo">
+            <h2>Products</h2>
+        </div>
+    </header>   
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+        </ul>
+    </nav>
+
+
+    <main>
+          <!-- PineApple Vision S Details -->
+        <section id="vision-s-info" class="product-info">
+            <h1>PineApple Vision S - Advanced AR Glasses</h1>
+            <img src="../img/pineapplevisions.png" alt="PineApple Vision S" />
+            <p>Discover the future with PineApple Vision S. Our most advanced AR glasses feature cutting-edge technology, a sleek design, and an immersive experience like no other.</p>
+            <h2>Features</h2>
+            <ul>
+                <li>4K Micro-OLED Displays</li>
+                <li>Advanced AR Quad-Core Processor</li>
+                <li>8 Hours of Battery Life</li>
+                <!-- More features... -->
+            </ul>
+            <div class="gallery" id="vision-s-gallery">
+                <img src="../img/vision-s.png" alt="Vision S Image 1" class="active">
+                <img src="../img/img3.png" alt="Vision S Image 2">
+                <!-- Add more images as needed -->
+            </div>
+            <div class="gallery-nav">
+                <button onclick="navigateGallery('vision-s-gallery', 'prev')">&lt;</button>
+                <button onclick="navigateGallery('vision-s-gallery', 'next')">&gt;</button>
+            </div>
+            <h2>Use Cases</h2>
+            <p>Perfect for professionals and tech enthusiasts, Vision S integrates seamlessly into your work and play, enhancing productivity and entertainment.</p>
+            <!-- More sections as needed... -->
+        </section>
+
+        <!-- PineApple Vision Details -->
+        <section id="vision-info" class="product-info">
+            <h1>PineApple Vision - Your Everyday AR Companion</h1>
+            <img src="../img/pineapplevision.png" alt="PineApple Vision" />
+            <p>Introducing PineApple Vision. Designed for daily use, our AR glasses bring digital integration to your everyday life without compromising on style or comfort.</p>
+            <h2>Features</h2>
+            <ul>
+                <li>1080p Micro-LCD Displays</li>
+                <li>AR  Dual-Core Processor</li>
+                <li>5 Hours of Battery Life</li>
+                <li>4GB LPDDR4 RAM</li>
+                <li>128GB internal storage, expandable with Micro SD</li>
+                <li>Premium aluminium frame</li>
+                <li>IP54 water and dust resistant</li>
+                <li>Proprietary ClearView technology</li>
+                <li>EyeD biometric security</li>
+                <!-- More features... -->
+            </ul>
+            <div class="gallery" id="vision-gallery">
+                <img src="../img/vision.png" alt="Vision Image 1" class="active">
+                <img src="../img/img2.png" alt="Vision Image 2">
+                <!-- Add more images as needed -->
+            </div>
+            <div class="gallery-nav">
+                <button onclick="navigateGallery('vision-gallery', 'prev')">&lt;</button>
+                <button onclick="navigateGallery('vision-gallery', 'next')">&gt;</button>
+            </div>
+            <h2>Use Cases</h2>
+            <p>Whether you're at home or on the go, Vision enhances your reality with features that keep you connected to the digital world while staying present in the real one.</p>
+            <!-- More sections as needed... -->
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <img src="../img/pineapple.png" alt="PineApple Logo" class="footer-logo">
+            <p>&copy; 2023 PineApple Inc.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Function to show the relevant product info based on the URL parameter
+        function showRelevantProductInfo() {
+            const params = new URLSearchParams(window.location.search);
+            const product = params.get('product'); // 'vision-s' or 'vision'
+
+            // Hide all product info sections initially
+            document.querySelectorAll('.product-info').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Show only the relevant product info section
+            if (product) {
+                const sectionToShow = document.getElementById(`${product}-info`);
+                if (sectionToShow) {
+                    sectionToShow.style.display = 'block';
+                }
+            }
+        }
+
+        // Run the function when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', showRelevantProductInfo);
+
+        function navigateGallery(galleryId, direction) {
+    const gallery = document.getElementById(galleryId);
+    const images = gallery.getElementsByTagName('img');
+    let activeIndex = Array.from(images).findIndex(image => image.classList.contains('active'));
+
+    if (direction === 'next') {
+        activeIndex = (activeIndex + 1) % images.length;
+    } else if (direction === 'prev') {
+        activeIndex = (activeIndex - 1 + images.length) % images.length;
+    }
+
+    Array.from(images).forEach(image => image.classList.remove('active'));
+    images[activeIndex].classList.add('active');
+}
+
+    </script>
+</body>
+</html>

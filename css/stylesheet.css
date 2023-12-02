@@ -2,234 +2,519 @@
   font-family:HelveticaNeue;
   src: url(../ITCAvantGarde.ttf);
 }
-@keyframes fadeIn {
-	from {opacity:0;}
-	to {opacity:1;}
+
+  * {
+	 font-family:'HelveticaNeue', Helvetica, sans-serif;  
   }
-  
 
-html,
 body {
-   margin:0;
-   padding:0;
-   height:100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-h1 {
-	margin-bottom:110px;
-}
-
-
-video.headervid {
+header {
+    position: relative;
     width: 100%;
-    height: 50vh;
-    object-fit: cover; /*allows me to resize video container without video distorting. Instead it'll scale to fit it*/
-	margin-left:-8px;
-	margin-top:-20px;
+	height:350px; /* height of header and video */
+	overflow:hidden; /* makes sure the video is clipped to header */
+}
+
+.header-logo {
+    width: 300px; /* Adjust to the size you want */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Stack the image above the text */
+    margin: 0 auto; /* Center the image */
+}
+
+header video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
 }
 
 
-div.pagecontainer {
-	position: relative;
-	margin:0px 10vw;
-	max-height: 80vh;
-	max-width: 80vw;
-	flex:1 0 auto;
 
+.header-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
 }
 
-* {
-
-	font-family:'HelveticaNeue', Helvetica, sans-serif; /*uses Helvetica Neue (font imported from root folder), then Helvetica in case there is a problem with the first font, then a generic sans-serif font if Helvetica is not installed*/
-}
-
-.dimcontainer {
-  position: relative;
-}
-
-.dimcontainer:before {
-	content: ""; /*needed for dim effect*/
-	position: absolute;
-	left: 0; right: 0;
-	top: 0; bottom: 0;
-	background: rgba(0,0,0,.5);
-	margin: -20px -8px 0px -8px;
-	text-align:center;
+nav {
+    position: sticky;
+    top: 0;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    z-index: 10;
 	
 }
 
-.fade-in {
-	animation: fadeIn ease 1s; /*fades in whatever is using the tag for 1 second*/
-}
-  
-img {
-   display: block;
-	max-width:230px;
-	max-height:95px;
-	width: auto;
-	height: auto;
-	margin:0 auto;
-}
-  
-  
-h2, p.bodytext {
-	padding:20px;
-	text-align: center;
-	margin: auto;
-	opacity:0;
-    animation-name: fadeIn;
-	animation-duration: .8s; 
-	animation-delay: 1.5s; /*waits a second before animation appears*/
-	animation-fill-mode: forwards; /*keeps text opaque after animation instead of reverting */
+nav ul {
+	list-style: none; /* gets rid of dot point*/
+	padding: 0;
+	margin: 0;
 }
 
-.centerHeaderText {
-	content: ""; /*needed for dim effect*/
-	position:absolute;
-	padding-bottom:5vh;
-	left: 0; right: 0;
-	bottom:0;
-	text-align:center;
-	color:#ffffff;
-	font-size:40pt;
- 	animation-name: fadeIn;
-	animation-duration: .8s;
-	animation-delay: 0.5s;
-	opacity:0;
-	animation-fill-mode: forwards;
+nav li {
+	display: inline;
+	margin-right:10px; /* adjust spacing as needed */
+}
+nav li::after {
+    content: "|";
+    margin-left: 20px; /* Adjust spacing as needed */
+}
 
+nav li:last-child::after {
+    content: none; /* Remove separator after the last item */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px; /* Adjust padding as needed */
+}
+
+nav a:hover {
+    background-color: #555; /* Adjust hover color as needed */
 }
 
 
-
-
-.centerHeaderParagraph {
-	content: ""; /*needed for dim effect*/
-	position: absolute;
-	left: 0; right: 0;
-	bottom:0;
-	padding-bottom:10vh;
-	text-align:center;
-	color:#ffffff;
-	font-size:23pt;
-	opacity:0;
-	animation-name: fadeIn;
-	animation-duration: .8s; /* animation takes place in 0.8 secs*/
-	animation-delay: 1.5s; /* waits a second and a half before animation appears */
-	animation-fill-mode: forwards; /* keeps text opaque after animation instead of reverting */
-}
-table {
-	opacity:0;
- 	animation-name: fadeIn;
-	animation-duration: .8s;
-	animation-delay: 1.5s; 
-	animation-fill-mode: forwards; 
+.content-section {
+    display: flex;
+    align-items: center;
+    padding: 20px;
 }
 
-
-p.footerRight {
-	display: inline-flex;
-}
-a {
-	text-decoration:none;
-	font-weight:none;
-	color: #000000;
-	text-align: center;
-	margin: auto;
-}
-ul {
-	text-align: center;
-
+.content-section.reverse {
+    flex-direction: row-reverse;
 }
 
-
-.navbar { 
-	border:thin solid #fff;
-	background:rgb(190, 190, 190);
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-	position: sticky; /*allows navbar to move with screen once it is at top of page */
-	top:10px;
-	left:1px; 
-	right:1px;
-	width:101%;
-	z-index: 1; /* makes navbar appear over text*/
-	
+.text-content {
+    flex: 1;
+    padding: 20px;
 }
-li {
-	display: inline-block;
+
+.image-content {
+    flex: 1;
+    padding: 20px; /* Adjust padding for whitespace */
+    text-align: center; /* Centers the image if it's not full-width */
 	
 }
 
-
-
-.navbar li:not(:last-child) a::after { /*displays | after each element except for last one*/
-  content: " | ";
-  color: grey;
+.image-content img {
+    max-width: 75%; /* Limits the image to the container width */
+    height: auto; /* Maintains the aspect ratio of the image */
+    margin: 10px; /* Optional: adds some space around the image */
+	border: solid thin black;
+	border-radius:2px;
 }
 
-/* The below two rule sets are examples of pseudo classes, which are useful if you want certain html elements to react once something happens to them, e.g. you roll your mouse over it, or if it is a link, if you've already visited it*/
-li a:link {
-  text-decoration: none;
-}
-li a:hover {
-	transition: all 1s ease 0;
-	color:#00009b;
-	text-decoration: underline;
-	font-weight:bold;
-	
-	
+@media (max-width: 768px) { /* Adjust breakpoint as needed */
+    .text-content, .image-content {
+        flex: 1 1 100%; /* Each content section takes full width */
+        max-width: 100%; /* Allows content to fill the container */
+    }
 }
 
 
-.table {
-    border-collapse: collapse; /*removes padding from borders making it look more like a table instead of a bunch of borders around text*/
-    margin: 20px 0;
-    font-size: 10pt;
-    min-width: 400px; /*ensures table wont be too compressed when window is resized*/
-	margin-left: auto; /*centers table*/
-	margin-right: auto; /*centers table*/
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); /*adds nice shadow around sides*/
+.video-section {
+    text-align: center; /* Center-aligns the text */
+    padding: 20px;
 }
 
-.table thead tr {
-    background-color:  #999999;
-    color: #ffffff;
-    text-align: left;
-	font-size: 1.2em;
-}
-.table th,
-.table td {
-    padding: 12px 15px;
+.video-text {
+    margin-bottom: 20px; /* Adds space between the text and the video */
 }
 
-.table tbody tr {
-    border-bottom: 1px solid #000000;
+.video-container {
+    /* Centers the video and gives it a max width for larger screens */
+    margin: auto;
+    max-width: 800px; /* Adjust as needed */
 }
 
-.table tbody tr:nth-of-type(even) { /*zebra striped table setup on every even row*/
-    background-color: #b9b9b9;
+.video-container video {
+    width: 100%; /* Ensures the video is responsive */
+    height: auto; /* Maintains the aspect ratio of the video */
 }
 
-.table tbody tr:last-of-type {
-    border-bottom: thin solid #646464; /*adds aesthetic border on bottom of table*/
+
+
+/* VVV About Us CSS code VVV */
+
+
+.about-us {
+    max-width: 800px; /* Adjust as needed */
+    margin: auto;
+    padding: 20px;
 }
 
-.table tbody tr.active-row {
-    font-weight: bold;
-    color: #575757;
+.about-us h1, .about-us h2 {
+    text-align: center;
 }
 
-.topofpage {
-	border: 3px solid black;
-	border-radius: 10px;
-	padding: 10px;
+.intro {
+    font-size: 1.2em; /* Slightly larger font for introduction text */
+    margin-bottom: 20px;
 }
 
-input, form {
-	margin: 3px;
-	text-align: center;
+
+
+.timeline .event {
+    margin-bottom: 20px;
 }
 
-button {
-	text-align:center;
-	
+.team {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates a 3-column layout */
+    gap: 20px; /* Adjust the space between grid items */
+    max-width: 800px; /* Or the max-width that fits your design */
+    margin: auto; /* Center the grid horizontally */
+}
+
+.team-member {
+    text-align: center; /* Center the text below the image */
+}
+
+.team-member img {
+    width: 100%; /* Responsive images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; /* Optional: creates round images */
+}
+
+.member-info h3,
+.member-info p {
+    margin: 10px 0; /* Spacing above and below the text */
+}
+
+@media (max-width: 767px) {
+    /* Adjust grid for smaller screens */
+    .team {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    }
+}
+
+
+.team-member img {
+    border-radius: 50%; /* Circular images for team members */
+    width: 150px; /* Adjust as needed */
+    height: 150px; /* Adjust as needed */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+blockquote {
+    font-style: italic;
+    overflow: hidden;
+    position: relative;
+    line-height: 1.5;
+    padding: 20px;
+    quotes: "“" "”" "‘" "’";
+    border-left: 3px solid #ccc;
+    padding-left: 20px;
+    margin-left: 0;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+
+blockquote:before {
+    content: open-quote;
+    font-size: 4em;
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    color: #ccc;
+}
+
+blockquote:after {
+    content: close-quote;
+    font-size: 4em;
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    color: #ccc;
+}
+
+.values-list {
+    list-style: inside square;
+}
+
+.about-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+}
+
+
+/*End of about us code*/
+/*start of products*/
+
+#product-intro {
+    text-align: center;
+    padding: 20px;
+}
+
+.product-section {
+    display: flex;
+    flex-direction: row; /* Ensures that image and details are side by side */
+    align-items: center; /* Aligns items vertically */
+    justify-content: flex-start; /* Aligns content to the left */
+    overflow: hidden; /* Prevents any overflow from being visible */
+    position: relative; /* Allows absolute positioning within */
+    height: 50vh; /* This sets the height of the section */
+}
+.product-image {
+    width: 100vw;
+    height: 100%; /* This will depend on your design needs */
+    position: absolute;
+    left: 50%; /* Center the image horizontally */
+    transform: translateX(-90%); /* Offset the image by half its width to the left */
+
+    object-fit: cover;
+    object-position: 0% 75%; /* This will position the right part of the image in the center */
+    clip-path: inset(0 10vw 0 0vw); /* This clips the right half of the image so only the left is visible */
+}
+
+
+.product-image2 {
+    width: 100vw;
+    height: 100%; /* This will depend on your design needs */
+    position: absolute;
+    left: 50%; /* Center the image horizontally */
+    transform: translateX(-70%); /* Offset the image by half its width to the left */
+    object-fit: cover;
+    object-position: right 25%; /* This will position the right part of the image in the center */
+    clip-path: inset(0 30vw 0 -50vw); /* This clips the right half of the image so only the left is visible */
+}
+
+hr {
+    margin: 0;
+    border: thin black solid;
+}
+
+
+
+
+
+.product-details {
+    position: absolute; /* Positions the details over the image */
+    left: 50vw; /* Moves the details to the right half of the viewport */
+    width: 50vw; /* Sets the width of the details to half the viewport */
+    height: 100%; /* Sets the height to match the product section */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the content vertically */
+    align-items: center; /* Center the content horizontally */
+    padding: 0 4em; /* Adds padding inside the details area */
+    box-sizing: border-box; /* Includes padding in the width */
+}
+
+
+
+/* Your existing media queries and other styles */
+
+
+
+@media (max-width: 768px) {
+    /* Adjust layout for mobile devices */
+    .product-section {
+        flex-direction: column; /* Stack image and details vertically on small screens */
+        align-items: center; /* Center-align the items for a better mobile view */
+    }
+
+    .product-image,
+    .product-details {
+        width: 100%; /* Full width on small screens */
+    }
+
+    .product-details {
+        padding: 20px;
+        text-align: center; /* Center-align the text for a better mobile view */
+    }
+}
+
+
+.product-details h2 {
+    color: #333;
+}
+
+.product-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* Ensure the container for the buttons uses flexbox to align children inline */
+.product-details .buttons-container {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center; /* Center the buttons vertically */
+}
+
+
+
+.button {
+    background-color: #8b8b8b; /* Example button background color */
+    color: #ffffff; /* Button text color */
+    border: 1px solid transparent; /* Adjust as necessary, use 'none' if no border is desired */
+    padding: 10px 20px; /* Padding inside the buttons */
+    margin: 0 5px; /* Space between buttons */
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px; /* Adjust as necessary */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth background color transition on hover */
+}
+
+
+.button:hover {
+    background-color: #515151; /* Darker button background on hover */
+}
+
+
+/* Inline block display for buttons if not already aligned */
+.product-details button {
+    display: inline-block;
+}
+
+/* Ensure there is no other conflicting CSS that could be affecting the layout.
+   You might need to check for other styles in your stylesheet that could be overriding these. */
+
+
+
+
+.product-details button:hover {
+    background-color: #595959;
+}
+
+
+/* Gallery styles */
+.gallery {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    justify-content: center;
+    height: auto;
+
+
+}
+
+.gallery img {
+    max-width: 100%;
+    display: none; /* Hide all images initially */
+    max-height: 400px; /* Set a maximum height for the images */
+    object-fit: contain; /* Ensures the image fits within the container */
+}
+
+
+.gallery img.active {
+    display: block; /* Only show the active image */
+}
+
+.gallery-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.gallery-nav button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background: #8b8b8b;
+    border: none;
+    color: white;
+}
+
+.gallery-nav button:hover {
+    background-color: #525252;
+}
+
+
+
+
+.faq-section {
+    max-width: 800px; /* Restricts the max width for readability */
+    margin: 40px auto; /* Centers the section and adds vertical spacing */
+    padding: 20px; /* Adds padding around the content */
+    background-color: #fff; /* Monochrome background color for the FAQ section */
+    border-radius: 5px; /* Softens the corners */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+.faq-article {
+    margin-bottom: 30px; /* Separates each FAQ article */
+}
+
+.faq-article h2 {
+    border-bottom: 1px solid #ccc; /* Adds a separator under the category title */
+    padding-bottom: 10px; /* Adds spacing between the title and separator */
+    color: #333; /* Dark text for better readability */
+    margin-top: 0; /* Adjusts spacing at the top of the category */
+}
+
+.faq {
+    margin-bottom: 20px; /* Adds space between each Q&A pair */
+}
+
+.faq h3 {
+    background-color: #f9f9f9; /* Slightly off-white background for the question */
+    padding: 10px; /* Spacing inside the question box */
+    margin: 0; /* Removes default margin */
+    cursor: pointer; /* Indicates the item is interactive */
+    border-top: 1px solid #ccc; /* Separates questions visually */
+}
+
+.faq p {
+    background-color: #fff; /* White background for the answer */
+    padding: 10px 20px; /* Spacing inside the answer box */
+    margin: 0; /* Removes default margin */
+    display: none; /* Hide the answers by default */
+}
+
+.faq p:first-of-type {
+    border-top: none; /* Removes the border from the first answer */
+}
+
+/* Add a hover effect on the question to indicate interactivity */
+.faq h3:hover {
+    background-color: #e9e9e9;
+}
+
+/* When a question is active, we can style it differently */
+.faq h3.active {
+    color: #000; /* Darker text color when active */
+    background-color: #e9e9e9; /* Darker background color when active */
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+.footer-content {
+    display: inline-block;
+    text-align: center;
+}
+
+.footer-logo {
+    width: 200px; /* Adjust to the size you want */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Stack the image above the text */
+    margin: 0 auto; /* Center the image */
+}
+
+footer p {
+    margin-top: 10px; /* Space between logo and copyright text */
+}
+

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn More About Our Products</title>
+    <link rel="stylesheet" href="../css/stylesheet.css">
+   
+</head>
+<body>
+    <header>
+        <video autoplay loop muted>
+            <source src="../video/header.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="header-content">
+            <img src="../img/pineapple.png" alt="PineApple Logo" class="header-logo">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+    </header>   
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li>FAQ</li>
+        </ul>
+    </nav>
+
+
+    <main>
+        <section class="faq-section">
+
+            <article class="faq-article">
+                <h2>Product Information</h2>
+                <div class="faq">
+                    <h3>What technology is used in The PineApple Vision glasses?</h3>
+                    <p>Our AR glasses are equipped with 4K micro-OLED displays, advanced AR Quad-Core processors, and optics designed in-house for a broad field of view. They are the pinnacle of AR technology, providing an immersive and crisp visual experience in a lightweight form factor.</p>
+                </div>
+                <div class="faq">
+                    <h3>What is the battery life of PineApple Vision S?</h3>
+                    <p>The PineApple Vision S offers up to 8 hours of battery life on a single charge under typical usage conditions, while the base model provides approximately 5 hours.</p>
+                </div>
+                <div class="faq">
+                    <h3>Is PineApple Vision suitable for outdoor activities?</h3>
+                    <p>Yes, PineApple Vision has been designed for both indoor and outdoor activities with adaptive display technology for different lighting conditions.</p>
+                </div>
+                <div class="faq">
+                    <h3>Can I use PineApple Vision with my prescription glasses?</h3>
+                    <p>Currently, PineApple Vision is not compatible with prescription glasses. However, prescription lens options will be available in future models.</p>
+                </div>
+            </article>
+
+            <article class="faq-article">
+                <h2>Troubleshooting</h2>
+                <div class="faq">
+                    <h3>What should I do if my Vision won't turn on?</h3>
+                    <p>Firstly, ensure your Vision is fully charged. If they still won't turn on, perform a hard reset by holding down the power button (the center button located on the front of the frame) for 10 seconds. If issues persist, contact our support team for assistance.</p>
+                </div>
+        
+                <div class="faq">
+                    <h3>How can I improve tracking accuracy in my living space?</h3>
+                    <p>For optimal tracking, ensure your environment is well-lit and has distinct visual features that the glasses can detect. Avoid plain walls and empty spaces. If necessary, recalibrate the tracking through the settings menu.</p>
+                </div>
+        
+                <div class="faq">
+                    <h3>My Vision is overheating, what can I do?</h3>
+                    <p>Unlike computers and other high power devices, the Vision utilises passive cooling to draw heat away from the CPU, however this isnt as efficient as active cooling methods. As such, overheating can result if operated in hot climates or for long periods of time. If your glasses are overheating, take a break from using them to allow them to cool down. Avoid direct sunlight and high-temperature environments. If overheating occurs frequently, contact our customer service.</p>
+                </div>
+
+            </article>
+
+            <article class="faq-article">
+                <h2>Purchasing and Shipping</h2>
+                <div class="faq">
+                    <h3>What payment methods do you accept?</h3>
+                    <p>We accept all major credit cards, PayPal, and select cryptocurrency payments.</p>
+                </div>
+                <div class="faq">
+                    <h3>How long does shipping take?</h3>
+                    <p>Shipping times vary by location, but most orders are delivered within 3-5 business days.</p>
+                </div>
+            </article>
+
+            <article class="faq-article">
+                <h2>Updates & Support</h2>
+
+                <div class="faq">
+                    <h3>How do I update my Vision to the latest firmware?</h3>
+                    <p>Updates are delivered 'over-the-air' to your AR glasses. Ensure they are connected to Wi-Fi or mobile data and accept the update notification, or check for updates manually in the settings menu.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>What kind of after-purchase support do you offer?</h3>
+                    <p>We provide a comprehensive support package, including a one-year warranty and dedicated technical assistance. We also guarantee a 5 year support period, where quality of life and security updates and patches will be frequently released.</p>
+                </div>
+
+                <div class="faq">
+                    <h3>Are there any extended warranty options available?</h3>
+                    <p>Yes, we offer extended warranties for additional coverage. You can purchase extended warranty plans at the time of your product purchase or any time before your standard warranty expires.</p>
+                </div>
+            </article>
+        </section>
+       
+    </main>
+    <footer>
+        <div class="footer-content">
+            <img src="../img/pineapple.png" alt="PineApple Logo" class="footer-logo">
+            <p>&copy; 2023 PineApple Inc.</p>
+        </div>
+    </footer>
+    
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+        // This function toggles the display of the answer corresponding to the clicked question
+        function toggleAnswer(event) {
+            var answer = event.currentTarget.nextElementSibling; // Selects the next element after the clicked question, which should be the answer
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block'; // Toggles the display property
+        }
+
+        // Initially hide all answers and add click event listeners to each question
+        var faqQuestions = document.querySelectorAll('.faq h3');
+        faqQuestions.forEach(function(question) {
+            var answer = question.nextElementSibling;
+            answer.style.display = 'none'; // Initially hides the answer
+            question.addEventListener('click', toggleAnswer);
+        });
+        });
+
+
+    </script>
+</body>
+</html>
